@@ -5,6 +5,13 @@ body {
   padding: 20px;
 }
 
+#root {
+  .panel-heading {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+}
+
 footer {
   text-align: right;
 }
