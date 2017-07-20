@@ -17,6 +17,10 @@ import {
 // index.html ファイルをコピーする
 require('file-loader?name=../../dist/[name].[ext]!../index.html');
 
+// ''      for root path
+// '/dist' for './dist' path
+const basePath = '';
+
 //-----------------------------------
 // Action creators (Actionを返す)
 //-----------------------------------
@@ -48,8 +52,8 @@ class AppComponent extends React.Component {
         <div className="panel-body">
           <p>React Router を使ってページを移動します。</p>
           <ul>
-            <li><Link to="/page2">2つ目のページへ</Link></li>
-            <li><Link to="/page3">3つ目のページへ</Link></li>
+            <li><Link to={`${basePath}/page2`}>2つ目のページへ</Link></li>
+            <li><Link to={`${basePath}/page3`}>3つ目のページへ</Link></li>
           </ul>
         </div>
       </div>
@@ -66,8 +70,8 @@ class AppComponent2 extends React.Component {
         <div className="panel-body">
           <p>React Router を使ってページを移動します。</p>
           <ul>
-            <li><Link to="/">トップページへ</Link></li>
-            <li><Link to="/page3">3つ目のページへ</Link></li>
+            <li><Link to={`${basePath}/`}>トップページへ</Link></li>
+            <li><Link to={`${basePath}/page3`}>3つ目のページへ</Link></li>
           </ul>
         </div>
       </div>
@@ -84,8 +88,8 @@ class AppComponent3 extends React.Component {
         <div className="panel-body">
           <p>React Router を使ってページを移動します。</p>
           <ul>
-            <li><Link to="/">トップページへ</Link></li>
-            <li><Link to="/page2">2つ目のページへ</Link></li>
+            <li><Link to={`${basePath}/`}>トップページへ</Link></li>
+            <li><Link to={`${basePath}/page2`}>2つ目のページへ</Link></li>
           </ul>
         </div>
       </div>
@@ -169,9 +173,9 @@ const history = syncHistoryWithStore(browserHistory, store)
 render((
   <Provider store={store}>
     <Router history={history}>
-      <Route path="/" component={AppContainer}/>
-      <Route path="/page2" component={AppContainer2}/>
-      <Route path="/page3" component={AppContainer3}/>
+      <Route path={`${basePath}/`} component={AppContainer}/>
+      <Route path={`${basePath}/page2`} component={AppContainer2}/>
+      <Route path={`${basePath}/page3`} component={AppContainer3}/>
     </Router>
   </Provider>
 ), document.getElementById('root'))
